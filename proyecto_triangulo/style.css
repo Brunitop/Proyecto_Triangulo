@@ -1,1 +1,23 @@
+.container {
+    display: flex; /* Utilizamos flexbox para el diseño de dos columnas */
+    justify-content: space-between; /* Distribuye los elementos uniformemente en las columnas */
+}
 
+.menu {
+    flex: 1; /* La sección "juego" ocupará todo el espacio restante */
+}
+
+.display {
+    margin-top: 60px;
+    width: 580px; /* Ancho fijo para la sección "menú" */
+}
+
+select{
+    right: 50px;
+    font-size: 3em;
+}
+
+.input {
+    background-color: aquamarine;
+
+}

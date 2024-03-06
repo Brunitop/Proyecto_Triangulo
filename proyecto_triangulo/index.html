@@ -6,6 +6,26 @@
     <title>Triangulo</title>
 </head>
 <body>
-    
+    <div id="container">
+        <div id="menu">
+            <select id="opcion" onchange="optionSelect()">
+                <option value="1">Tres Lados</option>
+                <option value="2">Ecuacion</option>
+                <option value="3">Coordenadas</option>
+            </select>
+
+            <div id="input">
+                <label for="fname">Base:</label>
+                <input type="text" id="base" name="base"><br><br>
+                <label for="lname">Altura:</label>
+                <input type="text" id="height" name="height"><br><br>
+                <input type="submit" value="Calcular">
+            </div>
+        </div>
+
+        <div id="display">
+
+        </div>
+    </div>
 </body>
 </html>
