@@ -16,11 +16,7 @@ function calcularBasealtura() {
 
     //Verificacion de que los datos sean válidos
     if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
-<<<<<<< HEAD
         resultadoElement.value = "Error: La base y la altura deben ser números mayores a cero.";
-=======
-        resultadoElement.value = "Error: La base y la altura deben ser números positivos mayores a cero.";
->>>>>>> main
     } else {
         var area = (base * altura) / 2;
         //calculamos perimetro
