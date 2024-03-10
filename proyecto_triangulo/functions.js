@@ -24,8 +24,6 @@ function calcularBasealtura() {
         var perimetro = base + altura + hipotenusa;
         resultadoElement.value = area + " cm2";
     }
-
-
 }
 
 function opcionLados(){
@@ -54,11 +52,7 @@ function calcularLados() {
         //calculamos perimetro
         var perimetro = (ladoA + ladoB + ladoC)
 
-<<<<<<< HEAD
-        resultadoElement.value = (area + " cm2");
-=======
         resultadoElement.value = area + " cm2";
->>>>>>> main
     } else {
         resultadoElement.value = ("Los lados proporcionados no forman un triángulo válido.");
     }
@@ -103,11 +97,7 @@ function calcularCoordenadas(){
         var lado3 = Math.sqrt((coordX1 - coordX3) ** 2 + (coordY1 - coordY3) ** 2);
         var perimetro = lado1 + lado2 + lado3;
 
-<<<<<<< HEAD
-    resultadoElement.value = area + " cm2";
-=======
         resultadoElement.value = area + " cm2";
->>>>>>> main
     }
 }
 
