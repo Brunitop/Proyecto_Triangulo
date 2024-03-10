@@ -5,7 +5,7 @@ function opcionBasealtura(){
         <input type="text" id="base" name="base"><br><br>
         <label for="ecuacion">Altura:</label>
         <input type="text" id="altura" name="altura"><br><br>
-        <button onclick="calculateArea()">Calcular</button>
+        <button onclick="calcularBasealtura()">Calcular</button>
     `;
 }
 
@@ -16,14 +16,16 @@ function calcularBasealtura() {
 
     //Verificacion de que los datos sean válidos
     if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
-        resultadoElement.innerText = "Error: La base y la altura deben ser números positivos mayores a cero.";
+        resultadoElement.value = "Error: La base y la altura deben ser números mayores a cero.";
     } else {
         var area = (base * altura) / 2;
         //calculamos perimetro
         var hipotenusa = Math.sqrt(base ** 2 + altura ** 2);
         var perimetro = base + altura + hipotenusa;
-        resultadoElement.innerText = "El área del triángulo con base " + base + " y altura " + altura + " es: " + area + "cm2 y su perímetro es " + perimetro;
+        resultadoElement.value = area + " cm2";
     }
+
+
 }
 
 function opcionLados(){
@@ -35,7 +37,7 @@ function opcionLados(){
         <input type="text" id="ladoB" name="ladoB"><br><br>
         <label for="ladoC">Lado C:</label>
         <input type="text" id="ladoC" name="ladoC"><br><br>
-        <button onclick="calculateArea()">Calcular</button>
+        <button onclick="calcularLados()">Calcular</button>
     `;
 }
 
@@ -52,9 +54,9 @@ function calcularLados() {
         //calculamos perimetro
         var perimetro = (ladoA + ladoB + ladoC)
 
-        resultadoElement.innerText = ("El área del triángulo con lados " + ladoA + ", " + ladoB + " y " + ladoC + " es " + area + "cm2 y su perímetro es " + perimetro);
+        resultadoElement.value = (area + " cm2");
     } else {
-        resultadoElement.innerText = ("Los lados proporcionados no forman un triángulo válido.");
+        resultadoElement.value = ("Los lados proporcionados no forman un triángulo válido.");
     }
 }
 
@@ -73,7 +75,7 @@ function opcionCoordenadas(){
         <input type="text" id="coordX3" name="coordX3"><br><br>
         <label for="coordY3">Coordenada Y3:</label>
         <input type="text" id="coordY3" name="coordY3"><br><br>
-        <button onclick="calculateArea()">Calcular</button>
+        <button onclick="calcularCoordenadas()">Calcular</button>
     `;
 }
 
@@ -88,7 +90,7 @@ function calcularCoordenadas(){
 
     //verificar que los datos sean validos
     if (isNaN(coordX1) || isNaN(coordY1) || isNaN(coordX2) || isNaN(coordY2) || isNaN(coordX3) || isNaN(coordY3)) {
-        resultadoElement.innerText = "Error: Todos los valores deben ser números.";
+        resultadoElement.value = "Error: Todos los valores deben ser números.";
     }else{
     var area = 0.5 * Math.abs(coordX1 * (coordY2 - coordY3) + coordX2 * (coordY3 - coordY1) + coordX3 * (coordY1 - coordY2));
     //calculamos perímetro
@@ -97,7 +99,7 @@ function calcularCoordenadas(){
     var lado3 = Math.sqrt((coordX1 - coordX3) ** 2 + (coordY1 - coordY3) ** 2);
     var perimetro = lado1 + lado2 + lado3;
 
-    resultadoElement.innerText = "El área del triángulo con coordenadas (" + coordX1 + ", " + coordY1 + "), (" + coordX2 + ", " + coordY2 + "), (" + coordX3 + ", " + coordY3 + ") es: " + area + "cm2 y su perímetro es "+perimetro;
+    resultadoElement.value = area + " cm2";
     }
 }
 

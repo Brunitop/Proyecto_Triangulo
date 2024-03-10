@@ -9,12 +9,12 @@
 <script src="functions.js"></script>
 <body>
     <center><h1>Calcular el área de un Triángulo</h1></center>
-    <p style="font-size: 25px; font-family: American Typewriter, serif">
+    <p style="font-size: 25px; font-family: American Typewriter, serif; text-align: center;">
         Seleccione su método en base a los datos que tenga de su triángulo.
     </p>
 
     <div id="container">
-        <br id="menu">
+        <div id="menu">
             <select id="opcion" onchange="optionSelect()">
                 <option value="0">Selecione Método</option>
                 <option value="1">Base y Altura</option>
@@ -22,15 +22,13 @@
                 <option value="3">Coordenadas</option>
             </select>
 
-            <br></br>
-
             <div id="data-input" class="input-box">
                 
             </div>
         </div>
 
         <div id="display">
-
+            <input id="resultado" type="text" value="Texto de solo lectura" readonly>
         </div>
     </div>
 </body>
