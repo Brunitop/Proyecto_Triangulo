@@ -98,7 +98,29 @@ function calcularCoordenadas(){
         var perimetro = lado1 + lado2 + lado3;
 
         resultadoElement.value = area + " cm2";
+
+        // Coordenadas para el gráfico
+        var coordenadas = [coordX1, coordY1, coordX2, coordY2, coordX3, coordY3];
+
+        // Llamamos a la función para graficar
+        graficarTriangulo(coordenadas);
     }
+}
+
+function graficarTriangulo(coordenadas) {
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+    ctx.moveTo(coordenadas[0], coordenadas[1]);
+    ctx.lineTo(coordenadas[2], coordenadas[3]);
+    ctx.lineTo(coordenadas[4], coordenadas[5]);
+    ctx.closePath();
+
+    ctx.fillStyle = "rgba(0, 128, 255, 0.5)";
+    ctx.fill();
 }
 
 function optionSelect(){
