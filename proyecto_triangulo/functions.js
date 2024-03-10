@@ -16,7 +16,11 @@ function calcularBasealtura() {
 
     //Verificacion de que los datos sean válidos
     if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
+<<<<<<< HEAD
         resultadoElement.value = "Error: La base y la altura deben ser números mayores a cero.";
+=======
+        resultadoElement.value = "Error: La base y la altura deben ser números positivos mayores a cero.";
+>>>>>>> main
     } else {
         var area = (base * altura) / 2;
         //calculamos perimetro
@@ -54,7 +58,11 @@ function calcularLados() {
         //calculamos perimetro
         var perimetro = (ladoA + ladoB + ladoC)
 
+<<<<<<< HEAD
         resultadoElement.value = (area + " cm2");
+=======
+        resultadoElement.value = area + " cm2";
+>>>>>>> main
     } else {
         resultadoElement.value = ("Los lados proporcionados no forman un triángulo válido.");
     }
@@ -92,14 +100,18 @@ function calcularCoordenadas(){
     if (isNaN(coordX1) || isNaN(coordY1) || isNaN(coordX2) || isNaN(coordY2) || isNaN(coordX3) || isNaN(coordY3)) {
         resultadoElement.value = "Error: Todos los valores deben ser números.";
     }else{
-    var area = 0.5 * Math.abs(coordX1 * (coordY2 - coordY3) + coordX2 * (coordY3 - coordY1) + coordX3 * (coordY1 - coordY2));
-    //calculamos perímetro
-    var lado1 = Math.sqrt((coordX2 - coordX1) ** 2 + (coordY2 - coordY1) ** 2);
-    var lado2 = Math.sqrt((coordX3 - coordX2) ** 2 + (coordY3 - coordY2) ** 2);
-    var lado3 = Math.sqrt((coordX1 - coordX3) ** 2 + (coordY1 - coordY3) ** 2);
-    var perimetro = lado1 + lado2 + lado3;
+        var area = 0.5 * Math.abs(coordX1 * (coordY2 - coordY3) + coordX2 * (coordY3 - coordY1) + coordX3 * (coordY1 - coordY2));
+        //calculamos perímetro
+        var lado1 = Math.sqrt((coordX2 - coordX1) ** 2 + (coordY2 - coordY1) ** 2);
+        var lado2 = Math.sqrt((coordX3 - coordX2) ** 2 + (coordY3 - coordY2) ** 2);
+        var lado3 = Math.sqrt((coordX1 - coordX3) ** 2 + (coordY1 - coordY3) ** 2);
+        var perimetro = lado1 + lado2 + lado3;
 
+<<<<<<< HEAD
     resultadoElement.value = area + " cm2";
+=======
+        resultadoElement.value = area + " cm2";
+>>>>>>> main
     }
 }
 
