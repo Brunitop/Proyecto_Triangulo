@@ -1,4 +1,4 @@
-function opcionBasealtura(){
+function opcionBasealtura() {
     var inputSection = document.getElementById("data-input");
     inputSection.innerHTML = `
         <label for="ecuacion">Base:</label>
@@ -14,19 +14,34 @@ function calcularBasealtura() {
     var altura = parseFloat(document.getElementById("altura").value);
     var resultadoElement = document.getElementById("resultado");
 
-    //Verificacion de que los datos sean válidos
+    // Verificación de que los datos sean válidos
     if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
-        resultadoElement.value = "Error: La base y la altura deben ser números mayores a cero.";
+        resultadoElement.value = "Error: La base y la altura deben ser números positivos mayores a cero.";
     } else {
         var area = (base * altura) / 2;
-        //calculamos perimetro
+        // Calculamos perimetro
         var hipotenusa = Math.sqrt(base ** 2 + altura ** 2);
         var perimetro = base + altura + hipotenusa;
         resultadoElement.value = area + " cm2";
+
+        var coordenadas = {
+            base: base,
+            altura: altura,
+            hipotenusa: hipotenusa
+        };
+
+        // Obtén el contexto del canvas
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        // Llama a la función para graficar el triángulo
+        graficarTrianguloBA(ctx, base, altura);
+
+        console.log("Triángulo graficado:", coordenadas);
     }
 }
 
-function opcionLados(){
+function opcionLados() {
     var inputSection = document.getElementById("data-input");
     inputSection.innerHTML = `
         <label for="ladoA">Lado A:</label>
@@ -45,20 +60,35 @@ function calcularLados() {
     var ladoB = parseFloat(document.getElementById("ladoB").value);
     var ladoC = parseFloat(document.getElementById("ladoC").value);
 
-    //Verificación de que los datos sean validos
+    // Verificación de que los datos sean válidos
     if (ladoA + ladoB > ladoC && ladoA + ladoC > ladoB && ladoB + ladoC > ladoA) {
         var s = (ladoA + ladoB + ladoC) / 2;
         var area = Math.sqrt(s * (s - ladoA) * (s - ladoB) * (s - ladoC));
-        //calculamos perimetro
-        var perimetro = (ladoA + ladoB + ladoC)
+        // Calculamos perímetro
+        var perimetro = ladoA + ladoB + ladoC;
 
         resultadoElement.value = area + " cm2";
+
+        var coordenadas = {
+            ladoA: ladoA,
+            ladoB: ladoB,
+            ladoC: ladoC
+        };
+
+        // Obtén el contexto del canvas
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        // Llama a la función para graficar el triángulo
+        graficarTrianguloLados(ctx, ladoA, ladoB, ladoC);
+
+        console.log("Triángulo graficado:", coordenadas);
     } else {
-        resultadoElement.value = ("Los lados proporcionados no forman un triángulo válido.");
+        resultadoElement.value = "Los lados proporcionados no forman un triángulo válido.";
     }
 }
 
-function opcionCoordenadas(){
+function opcionCoordenadas() {
     var inputSection = document.getElementById("data-input");
     inputSection.innerHTML = `
         <label for="coordX1">Coordenada X1:</label>
@@ -77,7 +107,7 @@ function opcionCoordenadas(){
     `;
 }
 
-function calcularCoordenadas(){
+function calcularCoordenadas() {
     var resultadoElement = document.getElementById("resultado");
     var coordX1 = parseFloat(document.getElementById("coordX1").value);
     var coordY1 = parseFloat(document.getElementById("coordY1").value);
@@ -106,30 +136,58 @@ function calcularCoordenadas(){
         var coordenadas = [coordX1, coordY1, coordX2, coordY2, coordX3, coordY3];
 
         // Llamamos a la función para graficar
-        graficarTriangulo(ctx, ...coordenadas);
+        graficarTrianguloCoordenadas(ctx, ...coordenadas);
 
         console.log("Triángulo graficado:", coordenadas);
-
     }
 }
 
-function graficarTriangulo(ctx, x1, y1, x2, y2, x3, y3) {
+function graficarTrianguloBA(ctx, base, altura) {
+    // Limpiar el canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    console.log("Coordenadas recibidas:", x1, y1, x2, y2, x3, y3);
-  
+
+    // Dibujar el triángulo usando las coordenadas base y altura
+    ctx.beginPath();
+    ctx.moveTo(50, ctx.canvas.height - 50);
+    ctx.lineTo(50 + base, ctx.canvas.height - 50);
+    ctx.lineTo(50 + base / 2, ctx.canvas.height - 50 - altura);
+    ctx.closePath();
+    ctx.stroke();
+}
+
+
+function graficarTrianguloLados(ctx, ladoA, ladoB, ladoC) {
+    // Limpiar el canvas
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    // Dibujar el triángulo usando los lados proporcionados
+    var angleA = Math.acos((ladoB ** 2 + ladoC ** 2 - ladoA ** 2) / (2 * ladoB * ladoC));
+    var angleB = Math.acos((ladoA ** 2 + ladoC ** 2 - ladoB ** 2) / (2 * ladoA * ladoC));
+
+    ctx.beginPath();
+    ctx.moveTo(50, ctx.canvas.height - 50);
+    ctx.lineTo(50 + ladoB, ctx.canvas.height - 50);
+    ctx.lineTo(50 + ladoB * Math.cos(angleA), ctx.canvas.height - 50 - ladoB * Math.sin(angleA));
+    ctx.closePath();
+    ctx.stroke();
+}
+
+function graficarTrianguloCoordenadas(ctx, x1, y1, x2, y2, x3, y3) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.lineTo(x3, y3);
     ctx.closePath();
-  
-    ctx.fillStyle = "rgba(0, 128, 255, 0.5)";
-    ctx.fill();
-  }
 
-function optionSelect(){
+    ctx.fillStyle = "#333A73";
+    ctx.fill();
+}
+
+function optionSelect() {
     var opcion = document.getElementById("opcion").value;
-    switch(opcion){
+    switch (opcion) {
         case '0':
             var inputSection = document.getElementById("data-input");
             inputSection.innerHTML = ''; // Limpiar la sección de entrada
