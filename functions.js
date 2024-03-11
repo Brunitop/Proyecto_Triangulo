@@ -18,12 +18,10 @@ function calcularBasealtura() {
     var altura = parseFloat(document.getElementById("altura").value);
     var resultadoElement = document.getElementById("resultado");
 
-    //Verificacion de que los datos sean válidos
     if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
         resultadoElement.value = "Error: La base y la altura deben ser números positivos mayores a cero.";
     } else {
         var area = (base * altura) / 2;
-        //calculamos perimetro
         var hipotenusa = Math.sqrt(base ** 2 + altura ** 2);
         var perimetro = base + altura + hipotenusa;
         resultadoElement.value = area + " cm2";
@@ -33,14 +31,11 @@ function calcularBasealtura() {
             altura: altura,
             hipotenusa: hipotenusa
         };
-
-        // Obtén el contexto del canvas
+        
         var canvas = document.getElementById("trianguloCanvas");
         var ctx = canvas.getContext("2d");
 
-        // Llama a la función para graficar el triángulo
         graficarTrianguloBA(ctx, coordenadas);
-
         console.log("Triángulo graficado:", coordenadas);
     }
     
@@ -69,11 +64,9 @@ function calcularLados() {
     var ladoB = parseFloat(document.getElementById("ladoB").value);
     var ladoC = parseFloat(document.getElementById("ladoC").value);
 
-    //Verificación de que los datos sean validos
     if (ladoA + ladoB > ladoC && ladoA + ladoC > ladoB && ladoB + ladoC > ladoA) {
         var s = (ladoA + ladoB + ladoC) / 2;
         var area = Math.sqrt(s * (s - ladoA) * (s - ladoB) * (s - ladoC));
-        //calculamos perimetro
         var perimetro = (ladoA + ladoB + ladoC)
 
         resultadoElement.value = area + " cm2";
@@ -119,24 +112,17 @@ function calcularCoordenadas() {
     if (isNaN(coordX1) || isNaN(coordY1) || isNaN(coordX2) || isNaN(coordY2) || isNaN(coordX3) || isNaN(coordY3)) {
         resultadoElement.value = "Error: Todos los valores deben ser números.";
     } else {
-        // Calcular área
+        
         var area = 0.5 * Math.abs(coordX1 * (coordY2 - coordY3) + coordX2 * (coordY3 - coordY1) + coordX3 * (coordY1 - coordY2));
-
-        // Calcular perímetro
         var lado1 = Math.sqrt((coordX2 - coordX1) ** 2 + (coordY2 - coordY1) ** 2);
         var lado2 = Math.sqrt((coordX3 - coordX2) ** 2 + (coordY3 - coordY2) ** 2);
         var lado3 = Math.sqrt((coordX1 - coordX3) ** 2 + (coordY1 - coordY3) ** 2);
         var perimetro = lado1 + lado2 + lado3;
 
-        // Actualizar el resultado en el HTML
         resultadoElement.value = "Área: " + area.toFixed(2) + " cm2, Perímetro: " + perimetro.toFixed(2) + " cm";
-
-        // Coordenadas para el gráfico
         var coordenadas = [coordX1, coordY1, coordX2, coordY2, coordX3, coordY3];
 
-        // Llamamos a la función para graficar
         graficarTriangulo(ctx, ...coordenadas);
-
         console.log("Triángulo graficado:", coordenadas);
 
     }
@@ -157,10 +143,7 @@ function graficarTriangulo(ctx, x1, y1, x2, y2, x3, y3) {
 }
 
 function graficarTrianguloBA(ctx, base, altura) {
-    // Limpiar el canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-    // Dibujar el triángulo usando las coordenadas base y altura
     ctx.beginPath();
     ctx.moveTo(50, ctx.canvas.height - 50);
     ctx.lineTo(50 + base, ctx.canvas.height - 50);
