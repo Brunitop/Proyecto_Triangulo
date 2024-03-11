@@ -35,5 +35,12 @@
             <input id="resultado" type="text" value="Texto de solo lectura" readonly>
         </div>
     </div>
+    <script>
+        // Aquí colocamos el código JavaScript para obtener el contexto y llamar a la función de graficar
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+    
+        graficarTriangulo(ctx, 50, 50, 150, 50, 100, 150);
+      </script>
 </body>
 </html>

@@ -86,42 +86,46 @@ function calcularCoordenadas(){
     var coordX3 = parseFloat(document.getElementById("coordX3").value);
     var coordY3 = parseFloat(document.getElementById("coordY3").value);
 
-    //verificar que los datos sean validos
+    // Verificar que los datos sean válidos
     if (isNaN(coordX1) || isNaN(coordY1) || isNaN(coordX2) || isNaN(coordY2) || isNaN(coordX3) || isNaN(coordY3)) {
         resultadoElement.value = "Error: Todos los valores deben ser números.";
-    }else{
+    } else {
+        // Calcular área
         var area = 0.5 * Math.abs(coordX1 * (coordY2 - coordY3) + coordX2 * (coordY3 - coordY1) + coordX3 * (coordY1 - coordY2));
-        //calculamos perímetro
+
+        // Calcular perímetro
         var lado1 = Math.sqrt((coordX2 - coordX1) ** 2 + (coordY2 - coordY1) ** 2);
         var lado2 = Math.sqrt((coordX3 - coordX2) ** 2 + (coordY3 - coordY2) ** 2);
         var lado3 = Math.sqrt((coordX1 - coordX3) ** 2 + (coordY1 - coordY3) ** 2);
         var perimetro = lado1 + lado2 + lado3;
 
-        resultadoElement.value = area + " cm2";
+        // Actualizar el resultado en el HTML
+        resultadoElement.value = "Área: " + area.toFixed(2) + " cm2, Perímetro: " + perimetro.toFixed(2) + " cm";
 
         // Coordenadas para el gráfico
         var coordenadas = [coordX1, coordY1, coordX2, coordY2, coordX3, coordY3];
 
         // Llamamos a la función para graficar
-        graficarTriangulo(coordenadas);
+        graficarTriangulo(ctx, ...coordenadas);
+
+        console.log("Triángulo graficado:", coordenadas);
+
     }
 }
 
-function graficarTriangulo(coordenadas) {
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+function graficarTriangulo(ctx, x1, y1, x2, y2, x3, y3) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    console.log("Coordenadas recibidas:", x1, y1, x2, y2, x3, y3);
+  
     ctx.beginPath();
-    ctx.moveTo(coordenadas[0], coordenadas[1]);
-    ctx.lineTo(coordenadas[2], coordenadas[3]);
-    ctx.lineTo(coordenadas[4], coordenadas[5]);
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.lineTo(x3, y3);
     ctx.closePath();
-
+  
     ctx.fillStyle = "rgba(0, 128, 255, 0.5)";
     ctx.fill();
-}
+  }
 
 function optionSelect(){
     var opcion = document.getElementById("opcion").value;
