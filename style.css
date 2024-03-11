@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-direction: column; /* Ajustamos el cuerpo para ser una columna */
+    align-items: center; /* Centramos horizontalmente */
+    background-color: beige;
+}
+
+center {
+    background-color: orange;
+    width: 100%;
+}
+
+#container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px; /* Añadimos un margen superior */
+}
+
+#menu {
+    width: 45%; /* Ajustamos el ancho del menú */
+}
+
+#display {
+    margin-left: 420px;
+    margin-top: 20px;
+    width: 45%; /* Ajustamos el ancho de display */
+}
+
+select {
+    margin-left: 100px;
+    margin-top: 20px; /* Ajustamos el margen superior */
+    font-size: 1.5em;
+}
+
+.input-box {
+    margin-top: 20px; /* Añadimos un margen superior */
+    margin-left: 100px;
+    background-color: aqua;
+    width: 100%;
+    height: 250px;
+    border: 1px solid black;
+    padding: 20px;
+}
