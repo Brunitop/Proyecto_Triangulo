@@ -18,13 +18,13 @@ center {
 }
 
 #menu {
-    width: 45%; /* Ajustamos el ancho del menú */
+    width: 35%; /* Ajustamos el ancho del menú */
 }
 
 #display {
     margin-left: 420px;
     margin-top: 20px;
-    width: 45%; /* Ajustamos el ancho de display */
+    width: 40%; /* Ajustamos el ancho de display */
 }
 
 select {
@@ -41,4 +41,17 @@ select {
     height: 250px;
     border: 1px solid black;
     padding: 20px;
+}
+
+.grafico {
+    margin-top: 20px; /* Añadimos un margen superior */
+    background-color: aqua;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+#resultado {
+    margin-left: 60px;
 }

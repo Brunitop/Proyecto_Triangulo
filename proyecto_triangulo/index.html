@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcular Triangulo</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <script src="functions.js"></script>
 <body>
@@ -30,6 +31,8 @@
         </div>
 
         <div id="display">
+            <canvas id="canvas" class="grafico" width="400" height="400"></canvas>
+            <br></br>
             <input id="resultado" type="text" value="Texto de solo lectura" readonly>
         </div>
     </div>
