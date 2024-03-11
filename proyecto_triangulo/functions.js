@@ -182,9 +182,9 @@ function graficarTrianguloCoordenadas(ctx, x1, y1, x2, y2, x3, y3) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     ctx.beginPath();
-    ctx.moveTo(50 + x1, (ctx.canvas.height / 2) - y1);
-    ctx.lineTo(50 + x2, (ctx.canvas.height / 2) - y2);
-    ctx.lineTo(50 + x3, (ctx.canvas.height / 2) - y3);
+    ctx.moveTo(50 + x1, ctx.canvas.height - y1);
+    ctx.lineTo(50 + x2, ctx.canvas.height - y2);
+    ctx.lineTo(50 + x3, ctx.canvas.height - y3);
     ctx.closePath();
 
     ctx.fillStyle = "#333A73";
